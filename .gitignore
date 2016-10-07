@@ -109,7 +109,6 @@ void jogabilidade(){
    scanf ("%d %d", &a, &b);
    card2=TAB[a][b];
    printf("%c \n", card2);
-   if(x=a && y=b)
       if (card1==card2){
           printf("Voce encontrou um par\n\n", &card1, &card2);
           for(i=0;i<N;i++){
