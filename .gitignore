@@ -104,23 +104,28 @@ void jogabilidade(){
    printf ("escolha a primeira posição (linha coluna) - separe por espaço \n) ");
    scanf ("%d %d", &x, &y);
    card1=TAB[x][y];
-   printf("%c \n", card1);
    printf ("escolha a segunda posição (linha coluna) - separe por espaço \n");
    scanf ("%d %d", &a, &b);
    card2=TAB[a][b];
-   printf("%c \n", card2);
-      if (card1==card2){
-          printf("Voce encontrou um par\n\n", &card1, &card2);
-          for(i=0;i<N;i++){
-              for(j=0;j<M;j++){
-			      TAB_mostrar[x][y]=card1;
-              TAB_mostrar[a][b]=card2;
-			  printf("%5.1c  ", TAB_mostrar[i][j]);}
-		   printf("\n");};
-          printf("\n\n");
-      
+   for(i=0;i<N;i++){
+       for(j=0;j<M;j++){
+		  TAB_mostrar[x][y]=card1;
+          TAB_mostrar[a][b]=card2;
+          printf("%5.1c  ", TAB_mostrar[i][j]);}
+	   printf("\n");};
+   printf("\n\n");
+   if (card1==card2){
+       printf("Voce encontrou um par\n\n", &card1, &card2);
       }
        else{printf("não é um par\n", &card1, &card2);
+            for(i=0;i<N;i++){
+                for(j=0;j<M;j++){
+                    TAB_mostrar[x][y]=('?');
+                    TAB_mostrar[a][b]=('?');
+                    printf("%5.1c  ", TAB_mostrar[i][j]);}
+	            printf("\n");};
+            printf("\n\n");
+      
       }
    }
 }
