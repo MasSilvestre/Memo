@@ -4,6 +4,7 @@
 #include <locale.h>
 #include <unistd.h>
 #include <conio.h>
+#include <windows.h>
 #define N 5
 #define M 4
 #define L 10
@@ -23,7 +24,7 @@ int main(){
 	setlocale(LC_ALL, "Portuguese");
 	int i, j, end, a, b;
 	char menu;
-	end:
+	//end:
 	
     printf(" Iniciar 1\n");
 	
@@ -41,7 +42,7 @@ int main(){
 			mostrar();	
 			jogabilidade();
 			break;
-			case '2': tabela();
+			case '8': system("exit");
 			case '9':system("cls");
 			default:
             printf("operacao incorreta \n");
@@ -49,7 +50,7 @@ int main(){
             break;
 	}
 	system("cls");
-	goto end;
+	//goto end;
 	system("pause");
 	return 0;
 }
@@ -100,23 +101,40 @@ void mostrar(){
 void jogabilidade(){	
    int x, y, a, b , i, j;
    char card1, card2;
-   while(x>=0){
+   while(TAB_mostrar[i][j]!='?'){
    printf ("escolha a primeira posição (linha coluna) - separe por espaço \n) ");
    scanf ("%d %d", &x, &y);
    card1=TAB[x][y];
-   printf ("escolha a segunda posição (linha coluna) - separe por espaço \n");
-   scanf ("%d %d", &a, &b);
-   card2=TAB[a][b];
-   for(i=0;i<N;i++){
+   if (x>N || y>M)
+      printf("cordenada errada\n");
+    else {
+    for(i=0;i<N;i++){  
        for(j=0;j<M;j++){
 		  TAB_mostrar[x][y]=card1;
-          TAB_mostrar[a][b]=card2;
           printf("%5.1c  ", TAB_mostrar[i][j]);}
 	   printf("\n");};
    printf("\n\n");
+}
+      
+   printf ("escolha a segunda posição (linha coluna) - separe por espaço \n");
+   scanf ("%d %d", &a, &b);
+   card2=TAB[a][b];
+   if (a>N || b>M)
+      printf("cordenada errada\n");
+   else{ for(i=0;i<N;i++){
+       for(j=0;j<M;j++){
+		  TAB_mostrar[a][b]=card2;
+          printf("%5.1c  ", TAB_mostrar[i][j]);}
+	   printf("\n");};
+   printf("\n\n");
+   Sleep(3000);
+}
+   
    if (card1==card2){
        printf("Voce encontrou um par\n\n", &card1, &card2);
+      
       }
+       
        else{printf("não é um par\n", &card1, &card2);
             for(i=0;i<N;i++){
                 for(j=0;j<M;j++){
@@ -125,7 +143,9 @@ void jogabilidade(){
                     printf("%5.1c  ", TAB_mostrar[i][j]);}
 	            printf("\n");};
             printf("\n\n");
-      
       }
+      Sleep(1000);
+      system("cls");
    }
+   
 }
